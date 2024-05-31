@@ -1,0 +1,11 @@
+.cardContainer {
+    min-height: 100vh;
+    background: #202020;
+    padding: 50px;
+
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+}
