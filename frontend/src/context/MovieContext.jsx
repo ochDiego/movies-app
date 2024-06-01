@@ -9,12 +9,20 @@ const MovieContextProvider = ({ children }) => {
   const [data, setData] = useState([]);
   const [dispatchLike, setDispatchLike] = useState(false);
   const [favorite, setFavorite] = useState(false);
+  const [isMovieCreate, setIsMovieCreate] = useState(false);
+  const [isMovieDelete, setIsMovieDelete] = useState(false);
+
+  const [open, setOpen] = useState(false);
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
 
   useEffect(() => {
     getData().then((movies) => setData(movies));
 
     setDispatchLike(false);
-  }, [dispatchLike]);
+    setIsMovieCreate(false);
+    setIsMovieDelete(false);
+  }, [dispatchLike, isMovieCreate, isMovieDelete]);
 
   const handleLike = (movie) => {
     if (!movie.is_liked) {
@@ -38,6 +46,15 @@ const MovieContextProvider = ({ children }) => {
       .catch((e) => console.log(e));
   };
 
+  const handleDelete = (id) => {
+    if (confirm("¿Desea eliminar esta pelicula?")) {
+      axios
+        .delete(`http://localhost:8000/api/v1/movies/${id}`)
+        .then((res) => setIsMovieDelete(true))
+        .catch((e) => console.log(e));
+    }
+  };
+
   const moviesFilter = data.filter((movie) => movie.is_liked);
 
   return (
@@ -48,6 +65,11 @@ const MovieContextProvider = ({ children }) => {
         moviesFilter,
         favorite,
         setFavorite,
+        open,
+        handleClose,
+        handleOpen,
+        setIsMovieCreate,
+        handleDelete,
       }}
     >
       {children}
