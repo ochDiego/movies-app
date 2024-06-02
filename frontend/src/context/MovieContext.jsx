@@ -7,6 +7,10 @@ export const MovieContext = createContext();
 
 const MovieContextProvider = ({ children }) => {
   const [data, setData] = useState([]);
+
+  const [dataQt, setDataQt] = useState(5);
+  const [currentPage, setCurrentPage] = useState(1);
+
   const [dispatchLike, setDispatchLike] = useState(false);
   const [favorite, setFavorite] = useState(false);
   const [isMovieCreate, setIsMovieCreate] = useState(false);
@@ -46,6 +50,12 @@ const MovieContextProvider = ({ children }) => {
       .catch((e) => console.log(e));
   };
 
+  const indexFin = currentPage * dataQt;
+  const indexIni = indexFin - dataQt;
+
+  const nData = data.slice(indexIni, indexFin);
+  const nPages = Math.ceil(data.length / dataQt);
+
   const handleDelete = (id) => {
     if (confirm("¿Desea eliminar esta pelicula?")) {
       axios
@@ -55,12 +65,12 @@ const MovieContextProvider = ({ children }) => {
     }
   };
 
-  const moviesFilter = data.filter((movie) => movie.is_liked);
+  const moviesFilter = nData.filter((movie) => movie.is_liked);
 
   return (
     <MovieContext.Provider
       value={{
-        data,
+        nData,
         handleLike,
         moviesFilter,
         favorite,
@@ -70,6 +80,9 @@ const MovieContextProvider = ({ children }) => {
         handleOpen,
         setIsMovieCreate,
         handleDelete,
+        currentPage,
+        setCurrentPage,
+        nPages,
       }}
     >
       {children}

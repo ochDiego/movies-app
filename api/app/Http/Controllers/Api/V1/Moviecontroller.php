@@ -72,6 +72,7 @@ class Moviecontroller extends Controller
         }
     }
 
+
     public function destroy(int $id)
     {
         try {

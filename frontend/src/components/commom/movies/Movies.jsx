@@ -3,10 +3,10 @@ import { MovieContext } from "../../../context/MovieContext";
 import CardMovie from "../cardMovie/CardMovie";
 
 const Movies = () => {
-  const { data, moviesFilter, favorite } = useContext(MovieContext);
+  const { nData, moviesFilter, favorite } = useContext(MovieContext);
 
-  const moviesData = data
-    ? data.map((movie) => (
+  const moviesData = nData
+    ? nData.map((movie) => (
         <CardMovie
           key={movie.id}
           movie={movie}

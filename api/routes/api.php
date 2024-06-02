@@ -7,6 +7,7 @@ use App\Http\Controllers\Api\V1\LikeMovieController;
 
 Route::prefix('v1')->group(function () {
     Route::apiResource('movies', Moviecontroller::class);
+    //Route::get('/movies/{id}/delete', [Moviecontroller::class, 'delete']);
     Route::patch('movies/{id}/like', LikeMovieController::class);
 });
 

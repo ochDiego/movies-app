@@ -5,6 +5,7 @@ import Movies from "../../commom/movies/Movies";
 import style from "./Home.module.css";
 import { Button } from "@mui/material";
 import { useContext } from "react";
+import Pagination from "../../commom/pagination/Pagination";
 
 const Home = () => {
   const { handleOpen } = useContext(MovieContext);
@@ -20,6 +21,8 @@ const Home = () => {
       <div className={style.cardContainer}>
         <Movies />
       </div>
+
+      <Pagination />
     </>
   );
 };
