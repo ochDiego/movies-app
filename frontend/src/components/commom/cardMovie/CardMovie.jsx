@@ -7,6 +7,7 @@ import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import { Button } from "@mui/material";
+import DeleteIcon from "@mui/icons-material/Delete";
 import { useContext } from "react";
 import { MovieContext } from "../../../context/MovieContext";
 
@@ -48,6 +49,7 @@ const CardMovie = ({ movie }) => {
           variant="contained"
           color="error"
           onClick={() => handleDelete(movie.id)}
+          startIcon={<DeleteIcon />}
         >
           Eliminar
         </Button>
