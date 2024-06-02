@@ -66,7 +66,7 @@ const CreateMovieModal = () => {
   });
 
   return (
-    <div>
+    <>
       <Modal
         open={open}
         onClose={handleClose}
@@ -151,7 +151,7 @@ const CreateMovieModal = () => {
           </form>
         </Box>
       </Modal>
-    </div>
+    </>
   );
 };
 export default CreateMovieModal;

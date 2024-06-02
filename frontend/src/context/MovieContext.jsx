@@ -8,7 +8,7 @@ export const MovieContext = createContext();
 const MovieContextProvider = ({ children }) => {
   const [data, setData] = useState([]);
 
-  const [dataQt, setDataQt] = useState(5);
+  const [dataQt, setDataQt] = useState(6);
   const [currentPage, setCurrentPage] = useState(1);
 
   const [dispatchLike, setDispatchLike] = useState(false);
@@ -83,6 +83,7 @@ const MovieContextProvider = ({ children }) => {
         currentPage,
         setCurrentPage,
         nPages,
+        setDataQt,
       }}
     >
       {children}

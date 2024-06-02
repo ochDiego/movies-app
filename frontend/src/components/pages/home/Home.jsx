@@ -6,6 +6,7 @@ import style from "./Home.module.css";
 import { Button } from "@mui/material";
 import { useContext } from "react";
 import Pagination from "../../commom/pagination/Pagination";
+import MoviePage from "../../commom/moviePage/MoviePage";
 
 const Home = () => {
   const { handleOpen } = useContext(MovieContext);
@@ -14,9 +15,13 @@ const Home = () => {
     <>
       <Header />
 
-      <Button onClick={handleOpen}>Agregar pelicula</Button>
+      <div style={{ padding: "5px 50px" }}>
+        <Button onClick={handleOpen}>Agregar pelicula</Button>
+      </div>
 
       <CreateMovieModal />
+
+      <MoviePage />
 
       <div className={style.cardContainer}>
         <Movies />
